@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "StephaneDucasse 7/16/2017 22:01",
+	"super" : "Object",
+	"category" : "Containers-Queue",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"elements"
+	],
+	"name" : "CTQueue",
+	"type" : "normal"
+}
