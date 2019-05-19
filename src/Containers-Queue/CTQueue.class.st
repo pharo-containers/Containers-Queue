@@ -1,5 +1,6 @@
 "
 I'm a simple FIFO queue i.e., first in first out structure. I support basic collection protocol and in addition enqueue and dequeue as in Scala. 
+My basic support of collection API should be reviewd and probably improved (should check atomic queue protocol).
 
 
 "
@@ -9,7 +10,7 @@ Class {
 	#instVars : [
 		'elements'
 	],
-	#category : 'Containers-Queue'
+	#category : #'Containers-Queue'
 }
 
 { #category : #testing }
