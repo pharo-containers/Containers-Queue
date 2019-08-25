@@ -13,7 +13,7 @@ Class {
 	#category : #'Containers-Queue'
 }
 
-{ #category : #testing }
+{ #category : #'adding/removing' }
 CTQueue >> add: anElement [
 	"Add an element to the receiver. Note that the addition makes sure that when iterating over the receiver added first element are accessed first."
 	
@@ -21,7 +21,7 @@ CTQueue >> add: anElement [
 	^ anElement
 ]
 
-{ #category : #testing }
+{ #category : #'adding/removing' }
 CTQueue >> addAll: aCollection [
 	"Add the elements contained in the argument to the receiver. Note that the addition makes sure that when iterating over the receiver added first element are accessed first."
 	
@@ -32,20 +32,22 @@ CTQueue >> addAll: aCollection [
 { #category : #accessing }
 CTQueue >> at: anIndex [
 	"Accessed the element to the given index in the receiver according to the adding order."
+	
 	^ elements at: anIndex
 ]
 
 { #category : #'adding/removing' }
 CTQueue >> dequeue [
-	"Return the older element of the receiver.."
+	"Return the first added element of the receiver"
 	
 	^ elements removeFirst
 ]
 
 { #category : #'adding/removing' }
 CTQueue >> dequeueIfNone: aBlock [
-	"Return the older element of the receiver.."
-	elements ifEmpty: [ aBlock value ].
+	"Return the first added element of the receiver, if the queue is empty execute a block"
+	
+	elements ifEmpty: [ ^ aBlock value ].
 	^ elements removeFirst
 ]
 
@@ -53,11 +55,12 @@ CTQueue >> dequeueIfNone: aBlock [
 CTQueue >> do: aBlock [
 	"iterates the elements of the receiver starting first by first added elements."
 	
-	self do: aBlock
+	elements do: aBlock
 ]
 
 { #category : #testing }
 CTQueue >> includes: anElement [
+	"Answer if elements is found in the queue"
 
 	^ elements includes: anElement
 ]
