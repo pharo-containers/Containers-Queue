@@ -14,7 +14,7 @@ can only load the collection they need without 100 of related collections.
 ## Example
 
 ```smalltalk
-CTEnvironmentTest >> testDequeue
+CTEnvironmentTest >> testDequeue [
 
 	| queue |
 	queue := CTQueue new.
