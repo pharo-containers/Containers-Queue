@@ -62,9 +62,9 @@ CTQueue >> includes: anElement [
 	^ elements includes: anElement
 ]
 
-{ #category : #initialize }
+{ #category : #initialization }
 CTQueue >> initialize [
-	
+	super initialize.
 	elements := OrderedCollection new. 
 ]
 
