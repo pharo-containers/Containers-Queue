@@ -1,12 +1,9 @@
 # Containers-Queue
 
 [![Build Status](https://travis-ci.com/pharo-containers/Containers-Queue.svg?branch=master)](https://travis-ci.com/pharo-containers/Containers-Queue)
-
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
 [![Pharo version](https://img.shields.io/badge/Pharo-7.0-%23aac9ff.svg)](https://pharo.org/download)
 [![Pharo version](https://img.shields.io/badge/Pharo-8.0-%23aac9ff.svg)](https://pharo.org/download)
-<!-- [![Build status](https://ci.appveyor.com/api/projects/status/1wdnjvmlxfbml8qo?svg=true)](https://ci.appveyor.com/project/Ducasse/Containers-PropertyEnvironment)  -->
-
 
 A queue support FIFO (first in first out) behavior.
 
