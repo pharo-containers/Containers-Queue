@@ -5,7 +5,7 @@
 [![Pharo version](https://img.shields.io/badge/Pharo-7.0-%23aac9ff.svg)](https://pharo.org/download)
 [![Pharo version](https://img.shields.io/badge/Pharo-8.0-%23aac9ff.svg)](https://pharo.org/download)
 
-A queue support FIFO (first in first out) behavior.
+A queue support FIFO (first in first out) behavior. Now it is a bit limited so feel free to enhance it.
 
 This package is part of the Containers project: This project is to collect, clean, 
 test and document alternate collection datastructures. Each package is modular so that users 
