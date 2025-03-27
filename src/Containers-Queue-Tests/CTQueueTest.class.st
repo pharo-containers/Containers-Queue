@@ -27,23 +27,16 @@ CTQueueTest >> testAdd [
 
 { #category : #tests }
 CTQueueTest >> testAddGarantyFIFOOrder [
+	"Ensure elements are dequeued in FIFO order."
 	| queue |
 	queue := self queueClass new.
-	queue add: 'first added element'.
-	queue add: 'second added element'.
-	self assert: (queue at: 1) equals: 'first added element'.
-	self assert: (queue at: 2) equals: 'second added element'
-]
-
-{ #category : #tests }
-CTQueueTest >> testDequeue [
-	| queue |
-	queue := self queueClass new.
-	queue queue: 1.
-	queue queue: 2.
-	queue queue: 3.
-	self assert: queue dequeue equals: 1.
-	self assert: queue dequeue equals: 2
+	queue add: 'first'.
+	queue add: 'second'.
+	queue add: 'third'.
+	self assert: queue remove equals: 'first'.
+	self assert: queue remove equals: 'second'.
+	self assert: queue remove equals: 'third'.
+	self assert: queue isEmpty.
 ]
 
 { #category : #tests }
@@ -59,4 +52,79 @@ CTQueueTest >> testQueue [
 { #category : #tests }
 CTQueueTest >> testQueueGarantyFIFOOrder [
 	self assert: self queueClass new isEmpty
+]
+
+{ #category : #tests }
+CTQueueTest >> testAddAll [
+	"Ensure queueAll adds multiple elements at once."
+	| queue |
+	queue := self queueClass new.
+	queue addAll: #(10 20 30 40).
+	self assert: queue remove equals: 10.
+	self assert: queue remove equals: 20.
+	self assert: queue remove equals: 30.
+	self assert: queue remove equals: 40.
+]
+
+{ #category : #tests }
+CTQueueTest >> testEmptyQueueRemove [
+	| queue |
+	queue := self queueClass new.
+	self assert:  queue remove isNil.
+]
+
+{ #category : #tests }
+CTQueueTest >> testIsEmpty [
+	"Ensure isEmpty works correctly."
+	| queue |
+	queue := self queueClass new.
+	self assert: queue isEmpty.
+	queue add: 1.
+	self deny: queue isEmpty.
+	queue remove.
+	self assert: queue isEmpty.
+]
+
+{ #category : #tests }
+CTQueueTest >> testPeek [
+	"Ensure peek returns the first element without removing it."
+	| queue |
+	queue := self queueClass new.
+	queue add: 42.
+	queue add: 99.
+	self assert: queue peek equals: 42.
+	self assert: queue size equals: 2. "Peek should not remove elements"
+]
+
+{ #category : #tests }
+CTQueueTest >> testPoll [
+	"Ensure poll behaves correctly, returning nil when empty."
+	| queue |
+	queue := self queueClass new.
+	queue add: 'A'.
+	queue add: 'B'.
+	self assert: queue poll equals: 'A'.
+	self assert: queue poll equals: 'B'.
+	self assert: queue poll isNil.
+]
+
+{ #category : #tests }
+CTQueueTest >> testRemove [
+	"Ensure remove behaves correctly, returning nil when empty."
+	| queue |
+	queue := self queueClass new.
+	queue add: 1.
+	queue add: 2.
+	queue add: 3.
+	self assert: queue remove equals: 1.
+	self assert: queue remove equals: 2
+]
+
+{ #category : #tests }
+CTQueueTest >> testRemoveIfNone[
+"Ensure dequeueIfNone works correctly."
+	| queue result |
+	queue := self queueClass new.
+	result := queue removeIfNone: [ 'fallback' ].
+	self assert: result equals: 'fallback'.
 ]
