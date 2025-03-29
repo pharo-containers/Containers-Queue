@@ -128,3 +128,14 @@ CTQueueTest >> testRemoveIfNone[
 	result := queue removeIfNone: [ 'fallback' ].
 	self assert: result equals: 'fallback'.
 ]
+
+{ #category : #tests }
+CTQueueTest >> testLargeQueuePerformance [
+	"Verify FIFO behavior and performance with a large queue."
+	| queue size |
+	queue := self queueClass new.
+	size := 1000.
+	1 to: size do: [ :i | queue add: i ].
+	1 to: size do: [ :i | self assert: queue remove equals: i ].
+	self assert: queue isEmpty.
+]
