@@ -60,3 +60,22 @@ CTQueueTest >> testQueue [
 CTQueueTest >> testQueueGarantyFIFOOrder [
 	self assert: self queueClass new isEmpty
 ]
+
+{ #category : #tests }
+CTQueueTest >> testDequeueEmpty [
+	"Test dequeue on an empty queue raises an error."
+	| queue |
+	queue := self queueClass new.
+	self should: [ queue dequeue ] raise: Error description: 'Queue is empty'.
+]
+
+{ #category : #tests }
+CTQueueTest >> testLargeQueueFIFO [
+	"Test FIFO order with a larger dataset."
+	| queue size |
+	queue := self queueClass new.
+	size := 1000.
+	1 to: size do: [ :i | queue queue: i ].
+	1 to: size do: [ :i | self assert: queue dequeue equals: i ].
+	self assert: queue isEmpty.
+]
